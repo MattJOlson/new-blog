@@ -35,12 +35,27 @@ footer {
   color: #555;
 }
 
+a {
+  @apply pb-2 pt-1 font-bold hover:underline
+}
+
 h1 {
   font-size: 2.4rem;
+  @apply pb-6 pt-4 font-extrabold;
 }
 
 h2 {
   font-size: 2rem;
+  @apply pb-4 pt-2 font-bold;
+}
+
+h3 {
+  font-size: 1.8rem;
+  @apply pb-2 pt-1 font-bold;
+}
+
+p {
+  @apply text-justify leading-relaxed pb-2 pt-1;
 }
 
 article .header {

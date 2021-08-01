@@ -11,7 +11,7 @@ I should've read it far earlier.
 ## Who should read this book?
 Pretty much everyone in the tech industry.
 
-# Even me? I'm a junior developer, and I don't ever want to be a manager
+### Even me? I'm a junior developer, and I don't ever want to be a manager
 Even you.
 
 ## Who _shouldn't_ read this book?
@@ -63,7 +63,7 @@ cover study. You can probably get, I dunno, 80% of the benefit out of
 _The Manager's Path_ over a weekend, then come back later for more
 focused study of individual bits as and if they get relevant.
 
-# But I said I didn't _want_ to go into management!
+### But I said I didn't _want_ to go into management!
 Weird, I've said that too.
 
 Seriously though, this book is helpful even if you want to stay 100% on
@@ -94,7 +94,7 @@ Navigating Growth & Change_**
 
 [Amazon.com](https://smile.amazon.com/Managers-Path-Leaders-Navigating-Growth/dp/1491973897/)
 
-# Thanks
+### Thanks
 
 Thanks to [@fried_brice](https://twitter.com/fried_brice) for a quick,
 _a la minute_ editing pass and some great suggestions.
