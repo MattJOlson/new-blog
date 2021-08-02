@@ -58,6 +58,18 @@ p {
   @apply text-justify leading-relaxed pb-2 pt-1;
 }
 
+ul {
+  @apply list-disc leading-relaxed pb-3 pt-2;
+}
+
+ol {
+  @apply list-decimal leading-relaxed pb-3 pt-2;
+}
+
+blockquote {
+  @apply pl-8 shadow-lg
+}
+
 article .header {
   font-size: 1.4rem;
   font-style: italic;
