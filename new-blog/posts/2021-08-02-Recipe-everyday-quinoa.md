@@ -61,6 +61,9 @@ like you mean it.
 
 A few notes on seasoning:
 
+- I use Diamond Crystal kosher salt. If you don't, go by weight rather than
+  volume. Or just eyeball it, this isn't rocket science. I go with "a 
+  two-finger pinch per person".
 - The recipe above is deliberately a bit light on salt. Don't add just the
   amount I listed and then complain that it tastes boring, taste for salt at
   the end and add more if you need to. (Do this with every recipe, actually.)
