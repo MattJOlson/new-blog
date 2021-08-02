@@ -11,6 +11,9 @@ watch: css/style.css
 	cabal new-run site watch
 .PHONY : watch
 
+refresh: clean watch
+.PHONY : refresh
+
 css: css/style.css
 .PHONY : css
 
