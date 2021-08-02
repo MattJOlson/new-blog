@@ -32265,13 +32265,13 @@ footer {
   color: #555;
 }
 
-a {
+body a {
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
   font-weight: 700
 }
 
-a:hover {
+body a:hover {
   text-decoration: underline;
 }
 
