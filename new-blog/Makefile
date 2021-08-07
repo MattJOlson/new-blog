@@ -3,11 +3,11 @@ clean:
 	cabal new-run site clean
 .PHONY : clean
 
-build: css/style.css
+build: css
 	cabal new-run site build
 .PHONY : build
 
-watch: css/style.css
+watch: css
 	cabal new-run site watch
 .PHONY : watch
 
