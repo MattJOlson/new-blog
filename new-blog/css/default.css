@@ -8,21 +8,25 @@ html {
 
 body {
   font-size: 1.6rem;
-  color: #000;
+  /* color: #000; */
+  /* bgcolor: #ede3da; */
+  @apply text-yellow-900 bg-blue-100;
 }
 
 header {
-  border-bottom: 0.2rem solid #000;
+  /* border-bottom: 0.2rem solid #000; */
+  @apply border-b-2 border-yellow-900;
 }
 
 nav {
   text-align: right;
+  @apply text-yellow-900;
 }
 
 nav a {
   font-size: 1.8rem;
   font-weight: bold;
-  color: black;
+  /* color: black; */
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -30,13 +34,14 @@ nav a {
 footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
+  /* border-top: 0.2rem solid #000; */
   font-size: 1.2rem;
-  color: #555;
+  /* color: #555; */
+  @apply border-t-2 border-yellow-900 text-yellow-700;
 }
 
 body a {
-  @apply pb-2 pt-1 font-bold hover:underline
+  @apply pb-2 pt-1 font-bold hover:underline;
 }
 
 h1 {
@@ -67,19 +72,22 @@ ol {
 }
 
 blockquote {
-  @apply pl-8 shadow-lg
+  @apply pt-2 pb-2 pr-2 pl-4 shadow-lg ml-4 mb-8 rounded-2xl bg-blue-200 bg-opacity-50
 }
 
 article .header {
   font-size: 1.4rem;
   font-style: italic;
-  color: #555;
+  /* color: #555; */
+  @apply text-yellow-700
 }
 
 .logo a {
+  font-size: 3.4rem;
   font-weight: bold;
-  color: #000;
+  /* color: #000; */
   text-decoration: none;
+  @apply text-yellow-900
 }
 
 @media (max-width: 319px) {

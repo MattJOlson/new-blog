@@ -93,8 +93,8 @@ The great virtue of Haskell is that "if it compiles, it runs", right? On to the
 next step, building a site skeleton. That went off without a hitch and led me to
 the meat of the Hakyll workflow, building and running the site generator.
 
-### A brief digression on why I'm doing all this
-
+> ### A brief digression on why I'm doing all this
+>
 > It's been about four years since I blogged with Jekyll. One of my strongest
 > impressions of _that_ tool is its configuration-orientedness - plugins and yaml
 > files and other activities that are at best programming-_adjacent_. Hakyll,
