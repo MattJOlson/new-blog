@@ -1,5 +1,6 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
 import           Data.Monoid (mappend)
 import           Hakyll
 
@@ -25,6 +26,7 @@ main = hakyll $ do
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
+            >>= saveSnapshot "postPreTemplate"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -34,10 +36,11 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) <>
-                    constField "title" "Archives"            <>
-                    defaultContext
+            let archiveCtx = mconcat
+                    [ listField "posts" postCtx (return posts)
+                    , constField "title" "Archives"
+                    , defaultContext
+                    ]
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" 
@@ -48,12 +51,18 @@ main = hakyll $ do
 
 
     match "index.markdown" $ do
-        route  $ setExtension "html"
+        route $ setExtension "html"
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
+            let postsC = recentFirst =<< loadAll "posts/*"
+            posts <- postsC
+
+            let indexCtx = mconcat
+                    [ listField "posts" postCtx
+                        (pure $ tail posts)
+                    , listField "firstPosts" postCtx 
+                        (pure $ take 1 posts)
+                    , defaultContext
+                    ]
 
             pandocCompiler
                 >>= applyAsTemplate indexCtx
@@ -74,9 +83,16 @@ main = hakyll $ do
 
 ------------------------------------------------------------------------
 postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+postCtx = mconcat
+    [ dateField "date" "%B %e, %Y"
+    , field "description" previewBody
+    , defaultContext
+    ]
+
+previewBody :: Item String -> Compiler String
+previewBody Item {..} = do
+    rawBody <- loadSnapshotBody itemIdentifier "postPreTemplate"
+    pure $ unwords . take 100 . words $ rawBody
 
 feedConfig :: FeedConfiguration
 feedConfig = FeedConfiguration

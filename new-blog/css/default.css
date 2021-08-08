@@ -59,11 +59,11 @@ p {
 }
 
 ul {
-  @apply list-disc leading-relaxed pb-3 pt-2;
+  @apply list-disc leading-relaxed pb-3 pt-2 pl-10;
 }
 
 ol {
-  @apply list-decimal leading-relaxed pb-3 pt-2;
+  @apply list-decimal leading-relaxed pb-3 pt-2 pl-10;
 }
 
 blockquote {

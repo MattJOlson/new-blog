@@ -32307,6 +32307,7 @@ ul {
   list-style-type: disc;
   padding-top: 0.5rem;
   padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
   line-height: 1.625;
 }
 
@@ -32314,6 +32315,7 @@ ol {
   list-style-type: decimal;
   padding-top: 0.5rem;
   padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
   line-height: 1.625;
 }
 
