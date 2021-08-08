@@ -1,11 +1,21 @@
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Text.Pandoc.Highlighting (Style
+                                          , styleToCss)
+import           Text.Pandoc.Options      (ReaderOptions (..),
+                                           WriterOptions (..))
 
+------------------------------------------------------------------------
 
---------------------------------------------------------------------------------
+pandocCompiler' :: Compiler (Item String)
+pandocCompiler' =
+  pandocCompilerWith
+    defaultHakyllReaderOptions
+    defaultHakyllWriterOptions
+
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
@@ -18,14 +28,14 @@ main = hakyll $ do
 
     match (fromList ["about.markdown", "contact.markdown"]) $ do
         route   $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocCompiler'
             >>= loadAndApplyTemplate "templates/default.html" 
                 defaultContext
             >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocCompiler'
             >>= saveSnapshot "postPreTemplate"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= saveSnapshot "content"
@@ -53,8 +63,7 @@ main = hakyll $ do
     match "index.markdown" $ do
         route $ setExtension "html"
         compile $ do
-            let postsC = recentFirst =<< loadAll "posts/*"
-            posts <- postsC
+            posts <- recentFirst =<< loadAll "posts/*"
 
             let indexCtx = mconcat
                     [ listField "posts" postCtx
@@ -64,7 +73,7 @@ main = hakyll $ do
                     , defaultContext
                     ]
 
-            pandocCompiler
+            pandocCompiler'
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html"
                     indexCtx
