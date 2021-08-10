@@ -32277,7 +32277,8 @@ footer {
   --tw-border-opacity: 1;
   border-color: rgba(120, 53, 15, var(--tw-border-opacity));
   --tw-text-opacity: 1;
-  color: rgba(180, 83, 9, var(--tw-text-opacity));
+  color: rgba(120, 53, 15, var(--tw-text-opacity));
+  --tw-text-opacity: 0.75;
 }
 
 body a {
@@ -32354,7 +32355,8 @@ article .header {
   font-style: italic;
   /* color: #555; */
   --tw-text-opacity: 1;
-  color: rgba(180, 83, 9, var(--tw-text-opacity))
+  color: rgba(120, 53, 15, var(--tw-text-opacity));
+  --tw-text-opacity: 0.75;
 }
 
 .logo a {

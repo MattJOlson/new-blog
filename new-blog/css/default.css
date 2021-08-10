@@ -37,7 +37,7 @@ footer {
   /* border-top: 0.2rem solid #000; */
   font-size: 1.2rem;
   /* color: #555; */
-  @apply border-t-2 border-yellow-900 text-yellow-700;
+  @apply border-t-2 border-yellow-900 text-yellow-900 text-opacity-75;
 }
 
 body a {
@@ -79,7 +79,7 @@ article .header {
   font-size: 1.4rem;
   font-style: italic;
   /* color: #555; */
-  @apply text-yellow-700
+  @apply text-yellow-900 text-opacity-75;
 }
 
 .logo a {
