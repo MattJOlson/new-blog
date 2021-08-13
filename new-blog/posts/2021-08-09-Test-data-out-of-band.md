@@ -11,7 +11,7 @@ populate a missing field. The `Maybe` part is in a sense out of band of the
 
 By contrast, in a language without sum types you're often forced to carve off
 part of a type's values to represent things like "not there". For example, in C
-the `printf` function returns the number of charcters printed, or a negative
+the `printf` function returns the number of characters printed, or a negative
 integer to represent failure. An uninitialized `int` in C# will be `0`, just the
 same as an `int` you deliberately initialized to `0`. (You could make it a
 nullable `int` if you wanted, I suppose.)
@@ -101,7 +101,7 @@ let sut = dummyWidget { cheeseCapacity = 50 }
 In C# I might have a fluent builder for it:
 
 ```C#
-var sut = widget.With(() => cheeseCapcity(50));
+var sut = widget.With(() => cheeseCapacity(50));
 ```
 
 That lets whoever's reading my test focus on the relevant bit.

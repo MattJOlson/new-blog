@@ -7,8 +7,16 @@
         <description><![CDATA[A short sturdy weblog, fond of food and industry]]></description>
         <atom:link href="https://blog.audax-labs.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Mon, 09 Aug 2021 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 12 Aug 2021 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Recipe: Cheesy quinoa "grits"</title>
+    <link>https://blog.audax-labs.com/posts/2021-08-12-Recipe-quinoa-grits.html</link>
+    <description><![CDATA[<p>Serves four as a side.</p> <h2 id="ingredients">Ingredients</h2> <ul> <li>1 cup quinoa, rinsed</li> <li>1 shallot, fine dice</li> <li>4 cloves garlic, fine dice</li> <li>1 tbsp butter</li> <li>1 tsp salt (4g)</li> <li>1/4 tsp MSG</li> <li>“some” chili flakes</li> <li>2 Bay leaves</li> <li>1 cup Gruyère, shredded</li> <li>1 cup whole milk</li> <li>2 cups chicken stock</li> </ul> <h2 id="method">Method</h2> <ol type="1"> <li>Melt the butter in a small saucepan over medium-low heat.</li> <li>Add the garlic and chili flakes and cook until garlic is fragrant and barely starting to turn golden, about 2-3min</li> <li>Add quinoa and increase heat to medium. Toast quinoa another 2-3min, stirring occasionally. There’s no visual]]></description>
+    <pubDate>Thu, 12 Aug 2021 00:00:00 UT</pubDate>
+    <guid>https://blog.audax-labs.com/posts/2021-08-12-Recipe-quinoa-grits.html</guid>
+    <dc:creator>Matt Olson</dc:creator>
+</item>
+<item>
     <title>Test data semiotics: pull it "out of band"</title>
     <link>https://blog.audax-labs.com/posts/2021-08-09-Test-data-out-of-band.html</link>
     <description><![CDATA[<p>One of the nice things about the standard sum types is that they can give you a lot of explicitness. In a <code>Maybe String</code>, <code>Nothing</code> is pretty unambiguous; there ain’t no string there. By comparison, <code>Just ""</code> is also unambiguous; it’s an empty string, not (for example) the default value a JSON parser spat out to populate a missing field. The <code>Maybe</code> part is in a sense out of band of the <code>String</code> part, and that makes it easier to reason about it separately.</p> <p>By contrast, in a language without sum types you’re often forced to carve off part of]]></description>
