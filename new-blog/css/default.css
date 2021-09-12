@@ -41,7 +41,7 @@ footer {
 }
 
 body a {
-  @apply pb-2 pt-1 font-bold hover:underline;
+  @apply pb-2 pt-1 font-bold underline;
 }
 
 h1 {

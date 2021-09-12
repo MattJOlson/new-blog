@@ -7,8 +7,16 @@
         <description><![CDATA[A short sturdy weblog, fond of food and industry]]></description>
         <atom:link href="https://blog.audax-labs.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 12 Aug 2021 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Sep 2021 00:00:00 UT</lastBuildDate>
         <item>
+    <title>My Visual Studio Code setup (Sep 2021)</title>
+    <link>https://blog.audax-labs.com/posts/2021-09-11-Vs-code.html</link>
+    <description><![CDATA[<p>When I started a Haskell job in June, I figured I’d be drawn into doom-emacs as a daily-driver. Not so! It turns out <a href="https://code.visualstudio.com/">VS Code</a> is a pretty great fit for that dev problem, and what’s more it does an excellent job of letting me stay in the editor.</p> <p>Part of what makes Code great is what makes vim and emacs great: Just a shit-ton of plugins and plenty of configurability. I’m going to write a bit about my setup, on the off-chance that it’ll help someone else have more fun (or at least less friction) writing code.</p> <h2]]></description>
+    <pubDate>Sat, 11 Sep 2021 00:00:00 UT</pubDate>
+    <guid>https://blog.audax-labs.com/posts/2021-09-11-Vs-code.html</guid>
+    <dc:creator>Matt Olson</dc:creator>
+</item>
+<item>
     <title>Recipe: Cheesy quinoa "grits"</title>
     <link>https://blog.audax-labs.com/posts/2021-08-12-Recipe-quinoa-grits.html</link>
     <description><![CDATA[<p>Serves four as a side.</p> <h2 id="ingredients">Ingredients</h2> <ul> <li>1 cup quinoa, rinsed</li> <li>1 shallot, fine dice</li> <li>4 cloves garlic, fine dice</li> <li>1 tbsp butter</li> <li>1 tsp salt (4g)</li> <li>1/4 tsp MSG</li> <li>“some” chili flakes</li> <li>2 Bay leaves</li> <li>1 cup Gruyère, shredded</li> <li>1 cup whole milk</li> <li>2 cups chicken stock</li> </ul> <h2 id="method">Method</h2> <ol type="1"> <li>Melt the butter in a small saucepan over medium-low heat.</li> <li>Add the garlic and chili flakes and cook until garlic is fragrant and barely starting to turn golden, about 2-3min</li> <li>Add quinoa and increase heat to medium. Toast quinoa another 2-3min, stirring occasionally. There’s no visual]]></description>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Audax Labs - My Visual Studio Code setup (Sep 2021)</title>
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo items-center">
+                <a href="../">Audax Labs</a>
+            </div>
+            <nav>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="relative">
+            <h1>My Visual Studio Code setup (Sep 2021)</h1>
+                
+            <article>
+    <section class="header">
+        Posted on September 11, 2021
+        
+    </section>
+    <section>
+        <p>When I started a Haskell job in June, I figured I’d be drawn into doom-emacs as a daily-driver. Not so! It turns out <a href="https://code.visualstudio.com/">VS Code</a> is a pretty great fit for that dev problem, and what’s more it does an excellent job of letting me stay in the editor.</p>
+<p>Part of what makes Code great is what makes vim and emacs great: Just a shit-ton of plugins and plenty of configurability. I’m going to write a bit about my setup, on the off-chance that it’ll help someone else have more fun (or at least less friction) writing code.</p>
+<h2 id="navigation-vim-bindings-of-course-and-more">Navigation: Vim bindings, of course, and more</h2>
+<p>“Of course” in that I’ve been using vim, or pretending to in editors that aren’t vim, for about twenty years now. I happen to think that vim’s tendency to keep your hands in front of you is helpful in fighting RSI - provided you rebind <code>ctrl</code> to something more ergonomic than the bottom corner keys, like <code>caps lock</code> - but it’s what I’m used to and that’s what’s doing the heavy lifting.</p>
+<p>The <a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">Vim plugin</a> is extremely good, and emulates a few other plugins you might enjoy like <code>vim-easymotion</code> and <code>surround.vim</code>. It’s gotten better over time, too.</p>
+<h3 id="directory-tree-navigation-code-is-pretty-good-ctags-is-awesome">Directory tree navigation: Code is pretty good, ctags is awesome</h3>
+<p>VS Code wants to open a directory (er, “folder”) and deal with all the files in its subtree. My main work project has several thousand files, and I was pretty daunted when I first cloned the repo. Fortunately, Code makes it reasonably easy to get around.</p>
+<p>You may be familiar with the <em>command palette</em> - and if you aren’t, I’ll mention it later - but the shorter keybind <code>ctrl-P</code> gives you a file search dialog that respects directory prefixes, sorts pretty intelligently based on your history, and doesn’t give me performance problems on trees of several thousand files. Its full-text search (<code>ctrl-shift-F</code>) is also pretty damn performant.</p>
+<p>If you’re working with code, though, good ol’ ctags is an excellent way to navigate by symbol. I use the <a href="https://marketplace.visualstudio.com/items?itemName=jtanx.ctagsx">ctagsx</a> extension, which did better than the others I tried. <code>F12</code> will go-to-definiton, but the Vim plugin also provides <code>gd</code> in normal mode (which is especially handy on my touchbar work mbp).</p>
+<h3 id="workspace-navigation-shortcuts">Workspace navigation shortcuts</h3>
+<p>One of my goals with any editor or IDE is to minimize the amount of time I have to grab the mouse or flip to a different window. Code helps by providing an in-workspace terminal - and I’m thrilled that in <code>$newjob</code> I’m rekindling my relationship with the command line - which lets me set things up like this:</p>
+<p><img src="../images/vscode-layout.png" /></p>
+<p>There’s an awful lot I can get done between the editor and the terminal. But navigating fluidly between them is a mild pain in the ass - until I set a few keyboard shortcuts.</p>
+<p>Briefly, what I’m trying to do is follow the vim-style <code>hjkl</code> navigation pattern, only between the editor and the terminal. I have <code>ctrl</code> mapped to <code>caps lock</code>, so I decided on <code>ctrl-shift</code> as a modifier set that doesn’t require too much hand movement. I set:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>View<span class="op">:</span> Focus First Editor Group  ctrl<span class="op">-</span>shift<span class="op">-</span>H  when terminalFocus</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Terminal<span class="op">:</span> Focus Terminal        ctrl<span class="op">-</span>shift<span class="op">-</span>L  when editorFocus</span></code></pre></div>
+<p>That lets me (mostly) hop back and forth between editor and terminal really quickly, which is especially good if I’m running a repl and editing code at the same time (as just one example). Twenty-one years after getting starry-eyed visions of the magic of lisp and the repl’s quick feedback, I’ve found a way to make it work. (Although not in lisp, and not in emacs. Their loss!)</p>
+<p>There is an <em>awful lot</em> of potential in remapping shortcuts, too. I can imagine navigating the tree-view sidebar with <code>ctrl-shift-J/K</code>, opening and closing subtrees with vim’s <code>z</code>-commands for text folds, and so on. I think this’ll be another project. Some of these commands aren’t bound by default, so the extra keybinds are unlocking new capabilities, but it’s more about being able to walk the whole workspace using a familiar navigation metaphor.</p>
+<h2 id="haskell-though">Haskell, though</h2>
+<p>So, just having good navigation facilities and easy terminal access is a pretty good start if you want to write Haskell for a living. But, we can do more. (Is “more” necessarily “better”? Well, a number of my colleagues get by with just vim and a terminal… and a good fulltext search tool, and probably some other stuff.)</p>
+<p>Anyway, Code has plenty of Haskell-related plugins to help out.</p>
+<h3 id="hoogle"><a href="https://marketplace.visualstudio.com/items?itemName=jcanero.hoogle-vscode">Hoogle</a></h3>
+<p><a href="https://hoogle.haskell.org/">Hoogle</a> is a search engine for Haskell’s packages, which lets you search by name (valuable if you’ve ever tried to google <code>&lt;$&gt;</code>) or by type signature (“what the hell do I do with one of <em>these?</em>”). The Hoogle plugin lets you search from within VS Code, either by popping up a prompt or by searching for selected text. (A habit I’m developing is to try go-to-definition with ctags, then Hoogle the identifier if it doesn’t pop up any hits. Either it’s in the codebase, or it’s imported, right?)</p>
+<p>Of particular note to me, and I dare say to more than zero of the people who might read this, is that the Hoogle plugin can point to an internal server - one that’s indexing the company’s codebase as well as the imported packages. That’s a simple matter of configuration, and so far as I’m aware the plugin won’t <em>yet</em> let you search both.</p>
+<p>It does break the editor-and-terminal model by opening a new tab in a browser, but at least does you the courtesy of focusing the browser (whence you can, presumably, alt-tab back once you’ve found what you wanted). I wonder if this’d be a good application for something like <code>lynx</code>.</p>
+<h3 id="haskell-syntax"><a href="https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell">Haskell syntax</a></h3>
+<p>Most of us want syntax highlighters now that they’re generally available. This one does the job.</p>
+<h3 id="haskell-language-server"><a href="https://marketplace.visualstudio.com/items?itemName=haskell.haskell">Haskell language server</a></h3>
+<p>My work computer doesn’t have the juice to run <code>hls</code> on a monolithic codebase, and I haven’t had the chance to really play with it on my personal machine, but it’s available if you want it.</p>
+<h3 id="haskell-linter"><a href="https://marketplace.visualstudio.com/items?itemName=hoovercj.haskell-linter">Haskell-linter</a></h3>
+<p><code>hlint</code> catches a number of errors and, uh, stylistic deviations, and runs much faster than a full compile. This plugin integrates it with VS Code, and if you’re running vim emulation you can hover a symbol with <code>gh</code>. I have found that on multiline suggestions, accepting the <code>hlint</code> suggestion through Code’s UI will often just clobber your code, so it pays to read the warning text and refactor by hand. (Probably a better learning experience, anyway.)</p>
+<h3 id="haskell-ghcid"><a href="https://marketplace.visualstudio.com/items?itemName=ndmitchell.haskell-ghcid">Haskell-ghcid</a></h3>
+<p>If you want more than <code>hlint</code> but less than <code>hls</code>, <code>ghcid</code> will incrementally build your Haskell code when you save source files and display any errors that pop up. This plugin integrates that with VS Code, and turns those console errors into red squiggles in an editor pane.</p>
+<h3 id="indent-rainbow"><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">Indent-rainbow</a></h3>
+<p>Haskell is, famously, a (<a href="https://en.wikipedia.org/wiki/Haskell_features#Layout">mostly</a>) indentation-sensitive language. This is basically good but occasionally frustrating, particularly in long constructs. (“You shouldn’t have long constructs!” Yes, yes.) The indent-rainbow extension does more or less what it says on the tin and marks various levels of indentation with coloured vertical stripes. It’s a helpful visual cue.</p>
+<h2 id="github">Github</h2>
+<p>Devs, of course, don’t <em>just</em> write code all day. Another significant part of my workday is Github, and there are a few helpful plugins available for that, too.</p>
+<h3 id="gitlens"><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a></h3>
+<p>GitLens does a <em>lot</em> more than what I do with it, but what it does for me with zero effort spent learning is enough - it provides a bunch of helpful file and line annotations for what was modified, when. I have, um, some instincts around old code, and being able to <em>just look at the editor</em> and find out whether the function I’m messing with was last changed three weeks ago or a year and a half ago is helpful.</p>
+<h3 id="github-pull-requests"><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">Github Pull Requests</a></h3>
+<p>This is a big deal for me. I find github’s web UI for pull requests annoying to navigate, and in general I try to stay inside VS Code as much as I can (with <code>#pets</code> or <code>#food</code> on work slack in the other monitor). I’ve gone so far as to crawl the github REST API looking for ways to list, reply to, and close comment threads with a CLI app in mind.</p>
+<p>No need, the github PR extension puts everything in Code.</p>
+<p>Do you struggle to remember to check out repos before reviewing them? Leave comments only on what’s in the diff and forget to check context? No worries, this extension has your back. It’s pretty great.</p>
+<h2 id="devcontainers">Devcontainers</h2>
+<p>I’d be remiss if I didn’t mention this feature. Mostly I use VS Code for work, because that’s where I do most of my programming, but I do write the occasional line of code for fun, and these days that’s Haskell. But my personal computer is set up more for gaming and a bit of digital art than for coding, and runs Windows.</p>
+<p>Not the easiest Haskell setup, right? What do?</p>
+<p><a href="https://hmemcpy.com/2020/02/setting-up-a-haskell-development-environment-in-minutes-in-vscode/">Problem solved forever!</a></p>
+<p>VS Code can attach to Docker containers <em>quite seamlessly</em> and run, say, an Ubuntu image with Haskell, cabal, hls, and all the goodies attached to a quite normal-looking directory in a Windows filesystem. It’s fucking great… provided someone’s done the work of creating a container for you (which, in this case, someone has).</p>
+<p>Github has <a href="https://docs.github.com/en/codespaces/developing-in-codespaces/using-codespaces-in-visual-studio-code">productized this</a>, of course. Anyway, it’s a pretty neat option.</p>
+<h2 id="whats-next">What’s next?</h2>
+<p>I feel like I’ve gotten a bit below the surface layer of what’s possible with VS Code, but there’s plenty more to be had.</p>
+<p>First off, I like the idea of extending the vim metaphor through keyboard navigation shortcuts. I like to turn off navigation views - give me more space on the screen for useful text - so switching between terminals is something I generally don’t bother with. <code>ctrl-shift-J/K</code> to cycle them seems like fun, as does similar navigation through the tree-view widgets, <code>z</code>-command manipulation of tree views as I mentioned above, and so on. There’s a lot of ways to make that better, or at least better <em>for me</em>.</p>
+<p>I also have a few annoyances I feel like I should be able to fix.</p>
+<p>For one thing, it bugs me that I can’t (or haven’t figured out how to) get Code to <em>load</em> with an open terminal, on the right, 80 columns wide. Starting out with a consistent layout feels like table stakes. I bet there’s a way.</p>
+<p>Another very specific thing that annoys me is how, when I’m writing a record in Haskell, putting a newline before the <code>{</code> in</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Foobar</span> <span class="ot">=</span> <span class="dt">Foobar</span> <span class="op">|</span>{ }</span></code></pre></div>
+<p>(where <code>|</code> represents the cursor) gives me</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Foobar</span> <span class="ot">=</span> <span class="dt">Foobar</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">|</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>instead of</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Foobar</span> <span class="ot">=</span> <span class="dt">Foobar</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    { <span class="op">|</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<p>I think this one is a relatively small but not straightforward change to the Haskell syntax plugin, I might give it a shot and see what I can do.</p>
+<p>I am for sure not done with this topic.</p>
+<h2 id="so-you-like-vs-code">So, you like VS Code?</h2>
+<p>For CLI-centric Haskell work, yes, I really do. The tooling support is decent, and fits well with the workflows I’ve generally seen and adopted in Haskell. I might change my mind later; I’m still pretty new to writing Haskell in prod and for a living.</p>
+<p>As a generic “smart editor” / plugin-driven IDE, yeah, it’s pretty good. I don’t have any real experience using it outside the Haskell space except for a tiny bit of noodling with CSS and Makefiles. I’ve heard good things from others, but it’s hard to vouch for without direct experience.</p>
+<p>What I will say is that if I ever make a career out of .net development again, I’m going back to full-fat Visual Studio and trying to do some of the “vim movement metaphor” stuff there that I’ve done in Code. VS by itself is <em>decent</em> for writing C# or F#; VS plus ReSharper plus especially <a href="https://www.ncrunch.net/">NCrunch</a> is fuckin magical. VS Code doesn’t yet, to my knowledge, have anything to match that combination. (Haskell is less dependent on red-green-refactor TDD for quick feedback, at least to my mind so far. Ask me again in six months.)</p>
+    </section>
+</article>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="relative content-center">
+                <div class="absolute left-0 flex flex-row place-content-start">
+                    <div>
+                    <a href="https://twitter.com/arachnocapital2"><img src="../images/icons8-twitter-30-brn.png" alt="Twitter (arachnocapital2)" /></a>
+                    </div><div>
+                    <a href="https://polywork.audax-labs.com/"><img src="../images/icons8-share-30-brn.png" alt="Polywork (mjolson)" /></a>
+                    </div><div>
+                    <a href="https://github.com/MattJOlson/"><img src="../images/icons8-github-30-brn.png" alt="Github (MattJOlson)" /></a>
+                    </div><div>
+                    <a href="https://www.linkedin.com/in/mattjolson/"><img src="../images/icons8-linkedin-30-brn.png" alt="Linkedin (MattJOlson)" /></a>
+                    </div><div>
+                    <a href="../rss.xml"><img src="../images/icon-rss-30-brn.png" alt="RSS feed" /></a>
+                    </div>
+                </div>
+                <div class="absolute right-0 place-content-end items-end">
+                Another great
+                <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+                blog
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

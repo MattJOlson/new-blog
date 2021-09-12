@@ -19,3 +19,6 @@ css: css/style.css
 
 css/style.css: css/default.css
 	npx tailwindcss -i css/default.css -o css/style.css
+
+recss: css watch
+.PHONY : recss
