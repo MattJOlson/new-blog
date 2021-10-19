@@ -40,8 +40,8 @@ equivalent of [Fordite](https://web.archive.org/web/20080216011855/http://www.fo
 Much of this dangerous clutter is far harder to spot than an assembly-line trip
 hazard, which is where aesthetics comes back into play.
 
-We have names for systems clogged by these hazards. "Legacy code." "[Big ball of
-Mud](http://www.laputan.org/mud/mud.html)."
+We have evocative names for systems clogged by these hazards. "Legacy code."
+"[Big ball of Mud](http://www.laputan.org/mud/mud.html)."
 
 ## Big-ball-of-mud legacy systems don't just _happen?_
 
@@ -287,7 +287,7 @@ This is easier at some jobs than others, of course. If you happen to work for
 you might be encouraged to chase down these connections; if you work somewhere
 that treats its devs as lines-of-code generators, your efforts are less likely
 to be appreciated. (This can take many forms, from being praised but not
-rewarded to being labelled a troublemaker.)
+rewarded to being labelled a troublemaker and actively discouraged.)
 
 ### Why even bother?
 
