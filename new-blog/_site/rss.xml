@@ -7,8 +7,16 @@
         <description><![CDATA[A short sturdy weblog, fond of food and industry]]></description>
         <atom:link href="https://blog.audax-labs.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 28 Sep 2021 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 16 Oct 2021 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Programming Aesthetics: I. The Missing Skill</title>
+    <link>https://blog.audax-labs.com/posts/2021-10-16-Code-aesthetics-1.html</link>
+    <description><![CDATA[<p>One of the most important skills for a builder of computer systems is a sense of aesthetics for those systems. And yet, it’s often lacking and even more often underappreciated or scorned.</p> <p>Let me explain.</p> <p>Let me <em>start</em> to explain.</p> <h2 id="preliminaries-frames-for-viewing-computer-systems">Preliminaries: Frames for viewing computer systems</h2> <p>There’s plenty of precedent for looking at programming as an art, the prime example being Knuth’s <a href="https://dl.acm.org/doi/10.5555/1984890">The Art of Computer Programming</a> books. Building computer systems offers implementers a staggering array of choices and tradeoffs, from which a path must be selected, and framing it as an “art” is one reasonable way to]]></description>
+    <pubDate>Sat, 16 Oct 2021 00:00:00 UT</pubDate>
+    <guid>https://blog.audax-labs.com/posts/2021-10-16-Code-aesthetics-1.html</guid>
+    <dc:creator>Matt Olson</dc:creator>
+</item>
+<item>
     <title>In Defence of Waste</title>
     <link>https://blog.audax-labs.com/posts/2021-09-28-In-defence-of-waste.html</link>
     <description><![CDATA[<p>I think “waste” gets a bad rap in software development.</p> <p>More to the point, I think the atavistic, fearful drive by software leaders to “eliminate waste” is harmful in itself. It gets far worse when combined with “Agile” principles – note the scare-quotes before you tab over to Twitter to yell at me, although do that anyway – and in combination they form one stout pillar of the violently incompetent state of software development management that is presently fucking over millions of smart, hard-working people and lighting trillions of dollars of value on fire.</p> <p>Are you mad yet? Let’s proceed.</p>]]></description>

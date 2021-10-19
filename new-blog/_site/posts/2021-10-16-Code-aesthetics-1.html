@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Audax Labs - Programming Aesthetics: I. The Missing Skill</title>
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo items-center">
+                <a href="../">Audax Labs</a>
+            </div>
+            <nav>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="relative">
+            <h1>Programming Aesthetics: I. The Missing Skill</h1>
+                
+            <article>
+    <section class="header">
+        Posted on October 16, 2021
+        
+    </section>
+    <section>
+        <p>One of the most important skills for a builder of computer systems is a sense of aesthetics for those systems. And yet, it’s often lacking and even more often underappreciated or scorned.</p>
+<p>Let me explain.</p>
+<p>Let me <em>start</em> to explain.</p>
+<h2 id="preliminaries-frames-for-viewing-computer-systems">Preliminaries: Frames for viewing computer systems</h2>
+<p>There’s plenty of precedent for looking at programming as an art, the prime example being Knuth’s <a href="https://dl.acm.org/doi/10.5555/1984890">The Art of Computer Programming</a> books. Building computer systems offers implementers a staggering array of choices and tradeoffs, from which a path must be selected, and framing it as an “art” is one reasonable way to approach that. Inevitably, if I’m going to be writing about programming “aesthetics”, it’s going to be with this lens in mind.</p>
+<p>Of course, a lot of us write code and build systems professionally, and the companies employing us have a different view: This is software as work product. This has maybe sharpened in recent decades with the influence of Lean (derived from Lean Manufacturing and the Toyota Production System) on the Agile movement. People steeped in the software-as-work-product perspective are prone to viewing software aesthetics as counterproductive gold-plating; my goal here is to show that it’s actually vitally important.</p>
+<blockquote>
+<p>The software-as-work-product frame isn’t exclusive to product managers or business executives – “people who tell us what to do” – either. Software development is an attractive profession, and it’s a lot more accessible than many jobs that pay as well. This is a profoundly good thing!</p>
+</blockquote>
+<p>Both of these frames coexist with a third, which Reid McKenzie described to me as “software as working conditions”. The systems we build today are the systems we work in tomorrow. When we focus narrowly on client-facing deliverables, we ignore cluttered workspaces littered with hazards and the computer-systems equivalent of <a href="https://web.archive.org/web/20080216011855/http://www.fordite.com/forditehistory.htm">Fordite</a>. Much of this dangerous clutter is far harder to spot than an assembly-line trip hazard, which is where aesthetics comes back into play.</p>
+<p>We have names for systems clogged by these hazards. “Legacy code.” “<a href="http://www.laputan.org/mud/mud.html">Big ball of Mud</a>.”</p>
+<h2 id="big-ball-of-mud-legacy-systems-dont-just-happen">Big-ball-of-mud legacy systems don’t just <em>happen?</em></h2>
+<p>Well, that’s kind of the problem, they <em>do</em> “just happen”. I suppose there are a few shops that set out to simmer up a big pot of feature soup (“move fast and find product-market fit!”) but most development orgs don’t deliberately create massive unmaintainable entanglements of load-bearing features. It just sort of ends up happening.</p>
+<p>A few years ago I worked on a system that would calculate prices for short-term rentals. One of the first things we built was a linear rate calculator: if it costs $<code>n</code> to rent a widget for an hour, and you want to rent it for <code>k</code> hours, this would multiply <code>n</code> by <code>k</code> to give you a cost for that rental period. We fully intended to layer more complexity on top, but had a design for that to live further up the structure of the code. This calculator was strictly <code>y=mx</code>, not even a fully-featured line equation.</p>
+<p>Things happened, years passed, I got “promoted” to manager, and two and a half years later I came back to that line equation it had <em>eight parameters.</em></p>
+<p><em>Eight!</em></p>
+<p>Nobody looked at this pure, virtuous function and decided it needed seven extra parameters. They got added, one at a time, over years. They got added as a few more green lines among dozens or hundreds of other green lines in the pull request. At least two got added by automated refactorings.</p>
+<p>We didn’t <em>design</em> eight parameters into that line equation, it <em>evolved</em> eight parameters over the course of two and a half years of feature development. And it’s not like we were exploring uncharted space – this was the <em>fourth rewrite</em> of that particular business feature (or third, depending on how you count it).</p>
+<p>Nobody looked at that code and thought “wait, this is just a line equation, isn’t it <em>unseemly</em> that it takes so many parameters?”</p>
+<p>And that’s just a single function on a single class with what you would hope is a single responsibility. The evolution of large complex systems is far worse.</p>
+<h2 id="mindset-tools-we-want-to-work-that-dont">Mindset tools we want to work that don’t</h2>
+<p>This is, of course, not what we’ve been promised by decades of software craft. But the tools that decades of software craft have given us are, by and large, tools that are easy to articulate rather than effective ones.</p>
+<h3 id="coding-style-guidelines">Coding style guidelines</h3>
+<p>When I was a young programmer, I spent an <em>awful</em> lot of time poring over coding style guides from all sorts of authorities, evaluating and forming and refining opinions about bracing style and variable naming conventions and tabs versus spaces. It might’ve raised the bar a bit, but not by much; in the end I might have learned to write better code just by writing <em>more</em> code, even if I didn’t know better than to call a variable <code>bbbbb</code> because <code>bbbb</code> was taken.</p>
+<p>Fast-forward a couple decades and I once again ran headfirst into coding style arguments, this time because tooling made it easy to automate a consistent style across the team, and that style must of course be agreed upon. Automation, you are probably aware, will do what it’s told regardless of whether it <em>ought to</em>, so our team’s coding-style champion issued an open request for code samples that autoformatted to something hideous rather than expressive (in order to amend the styling rules).</p>
+<p>This is, on its face, toweringly insufficient to prevent the sorts of evolutionary catastrophes we’re talking about.</p>
+<h3 id="clean-code-and-tactical-refactorings">“Clean code” and tactical refactorings</h3>
+<p>On that team where we put eight parameters on <code>y=mx</code>, we all had ReSharper licenses, and boy did we <em>use</em> them. <em>Extract Method</em> was a favourite on code reviews; we’d hound after loop bodies or mildly complex lambdas in LINQ blocks and suggest, ever so helpfully, “can we pull this out into a separate function with a meaningful name?” And damn, did we ever end up with a bunch of small methods calling other methods with meaningful names.</p>
+<p>Now the problem with that is that you end up with like <em>thirty</em> of them in the same class. And they’re private methods, which means they’re only under test by accident - try to expose them otherwise and there’s someone on the team who’ll argue that it’s worse to make implementation details visible than to leave them untested. (This sort of OO dogma counts under “coding style guidelines” for the purposes of this blog post, although I have more of a problem with it than I do with “don’t abbreviate names unnecessarily”, or, say, Allman-style bracing.)</p>
+<p>This is a pattern that keeps coming back: Emphasis on detail-level solutions (replacing three lines of <code>for</code> loop with a function call, a meaningful name, and a six-line private method) eventually creates problems at a class level. We needed people to have the mental space to take the time to <em>look</em> at a class with thirty private methods and pull the metaphorical andon cord: “Hey, team? This class has thirty fucking private methods, I think it needs refactoring. And so does this other parallel class, and this one here too, and… yo, we have a problem.”</p>
+<p>The thing is, it’s <em>easy</em> to identify an <em>Extract Method</em> refactoring, so those get suggested a lot. It’s <em>hard</em> to extract a subtype from a class that suddenly has thirty fucking private methods, and ReSharper doesn’t help you (or didn’t in 2016, maybe Machine Learning has solved this problem now). So guess where the buck stops, when the backlog’s a year long and the product manager’s livid over tickets getting pushed out weeks past where they were expected to ship.</p>
+<h3 id="solid-and-friends">SOLID and friends</h3>
+<p>When I interviewed for the job where we eventually put eight params on <code>y=mx</code>, I got grilled on the SOLID principles. (I faceplanted on the Interface Segregation Principle, which I confused with inversion of control somehow, but that didn’t stop them from hiring me.) I can’t say they helped us make good decisions.</p>
+<p>You’d think that, say, the Single Responsibility Principle would be a good guide to prevent you from adding an eighth, or maybe even a fifth or a sixth, param to your “calculate <code>y=mx</code> function. But it can just as easily be taken the other way:”This function’s responsibility is to calculate this rate, so it needs all the parameters necessary to do that calculation! Building up a bigger framework to have those <em>implicitly</em> available, perhaps by injecting context into a bunch of class constructors, is a waste of time!"</p>
+<p>Similarly, things like the Open-Closed Principle and Don’t Repeat Yourself are usually crystallized too quickly (“oh, we need code generation” is mostly a pipe dream if you don’t have access to template haskell, and a pain in the ass if you do) rather than held in mind and used as constraints. Liskov’s Substitution Principle is a perfect example of software engineering advice that looks like a shitpost (“A rectangle is a kind of square? What the <em>fuck</em>”).</p>
+<p>This is all good, well-meaning advice that’s utterly useless on a practical level unless you’ve already solved the problem it was meant to address (that is, thinking hard and somewhat abstractly about your implementation, and being willing to delay gratification - that is, shipping - for better abstractions).</p>
+<p>And we’re still only talking about software at the classes-and-functions level. It goes way beyond that!</p>
+<h3 id="microservices-and-domain-driven-design">Microservices and Domain-Driven Design</h3>
+<p>Monoliths are making a comeback, but for a few years microservices were the peak of fashion and the “obvious” best-practice architecture for webapps. Like OOP, the idea sounds compelling: Small, independent services that do one thing well and can be rewritten in a tiny fraction of the time it’d take to rebuild that crusty old monolith if you get one of them wrong. Sounds great!</p>
+<p>The problem is, <a href="https://www.melconway.com/Home/Conways_Law.html">Conway’s Law</a> (briefly: “You ship your org chart”) doesn’t go away just because you’ve put an event bus between everything. Your monolith was an unmaintainable nightmare because it wasn’t clear which responsibilities lived where, and so the causal graph of changes over <em>here</em> having unwanted side effects over <em>there</em> was impossible to know except by trial and error. You can make the same mistake with microservices, only instead of sorting it out with a debugger you’re going to be poring over event logs and Terraform configs. But at least you introduced a network layer in between, so you have to consider a much larger set of failures!</p>
+<p>Domain-Driven Design is another popular mental tool for software design, and it often comes along with microservices. One of DDD’s great strengths is its insistence on talking to domain experts, and building your software in terms of their language and their workflows (hence the name); this in fact has a lot of coherence with Conway’s Law. Unfortunately, that part can be a hard sell, either because the domain-expert parts of the org haven’t bought in or because it sounds to the dev org like a lot of work, and <em>that</em> can turn defining bounded contexts and mappings between them into a purely technical exercise. DDD’s more tactical patterns can still help, but once again they’re narrowly focused on a small part of the larger problem.</p>
+<blockquote>
+<p>Would work-as-imagined DDD suffice to prevent the kind of legacy systems we love to complain about? Probably not! It definitely helps, but doesn’t have enough to say about the operations side of the system.</p>
+<p>If you’re interested in learning more, I recommend Vaughn Vernon’s book <a href="https://www.oreilly.com/library/view/domain-driven-design-distilled/9780134434964/">Domain-Driven Design Distilled</a>.</p>
+</blockquote>
+<p>But all of these tools, from strong opinions about Hungarian notation to strong opinions about pub-sub integration, redeem themselves by <em>getting people to care about the code.</em></p>
+<h2 id="the-first-principle-is-giving-a-shit-about-the-little-things">The first principle is giving a shit about the little things</h2>
+<p>When I say I think developers should have an aesthetic sense about code, it starts with <em>having an opinion about what good systems look like.</em> It matters a lot less to me whether they prefer brutalist code while the project’s more Art Nouveau. If ethics is what you do when nobody’s watching, aesthetics is what you make when nobody’s focused on it - that line equation I keep coming back to grew its eight parameters in a series of small diffs when the real meat of the pull request was elsewhere.</p>
+<p>A lot of the kind of bad code I’m complaining about accretes in rushed changes at the margins of a piece of work. You may not know quite how to use the adjacent library or subsystem you need to talk to, so you copy existing code and insert your hooks where it seems reasonable. Then the compiler complains, so you make the smallest change you can to satisfy it: maybe you cast an argument to a type that’s not <em>quite</em> right but close enough. Then a test fails, so you add a conditional to shut it up. Your reviewer doesn’t know much about that library, either, and it’s not central to the feature you’re working on, so your changes don’t get a lot of scrutiny.</p>
+<p>And the graveyard gets a bit more haunted.</p>
+<blockquote>
+<p>It’s worth mentioning that code varies in how aesthetic it can reasonably be. Some code has to conform to an ossified interface – or it <em>has become</em> the ossified interface, and breaking it even to fix that one sharp edge that everyone complains about would require too many downstream changes to contemplate. Other code is deeply embedded in its capricious and arbitrary domain – maybe it’s dealing with regulations that have accreted over more than a century – and is better served by isolating it from the rest of the system’s concerns than trying to make it “nice”.</p>
+<p>That’s okay, good poetry has constraints too.</p>
+</blockquote>
+<p>Slowing down to better understand the library and its interface, refactor or wrap it to do what you need, and cover your changes with tests feels like a waste of time or extra effort, although it’s usually more practical than it appears. Refactoring, especially off a feature’s critical path, is something a lot of devs feel they have to ask permission for, and when you give someone a chance to say “no” to unplanned, unanticipated work they’ll usually take it. In this environment, devs don’t have the chance to develop their sense of code aesthetics, or actively suppress it because it keeps getting them in trouble.</p>
+<p>That sucks. That’s how legacy code “just happens”.</p>
+<h3 id="so-what-can-you-do">So what can you do?</h3>
+<p>The first step is having and honing that sense of aesthetics. If you’ve been reading along a little puzzled and aren’t sure what the fuss is about (“if it needs eight parameters then pass eight parameters, what’s the problem?”), think back to the code that’s bitten you in the ass: that simple behaviour change that took two and a half sprints; that new feature that’s impossible to test without bringing in the whole world as dependencies; that simple API change that brought down the site for four hours the Sunday after it was deployed. Think about what it looked like, which parts sucked, where and how it failed. You’re developing a sense for <em>code smells</em>, which I don’t hear talked about very much any more but is a great metaphor.</p>
+<p>One thing I like about the “code smells” metaphor over the tools I mentioned above is that it’s not an all-or-nothing concept; you can tolerate a mild stink for a little while until you finish something more important. Even if you can’t fix an issue on the spot, you can at least recognize it – and document it. Leave a comment above that sketchy typecast explaining that you don’t like it, but you aren’t aware of a better way and everyone who worked on that part of the codebase has left the company. Keep a collection of sketchy things you’ve found on your Confluence page. Even something temporary, like a warning in a pull request, is better than nothing. (Yes, pull requests live on past approval, but they’re <em>rarely</em> referred back to.)</p>
+<p>Documenting sketchy or smelly code makes it easier to notice patterns. It also makes it more likely that you’ll be able to triage a bug that falls out of the code that caught your disfavour, or you may be able to help someone else’s investigation take minutes instead of days.</p>
+<p>This is easier at some jobs than others, of course. If you happen to work for <a href="https://blog.pragmaticengineer.com/what-silicon-valley-gets-right-on-software-engineers/">a company that asks its devs to generate value wherever they can</a>, you might be encouraged to chase down these connections; if you work somewhere that treats its devs as lines-of-code generators, your efforts are less likely to be appreciated. (This can take many forms, from being praised but not rewarded to being labelled a troublemaker.)</p>
+<h3 id="why-even-bother">Why even bother?</h3>
+<p>Well, for one thing, you’ll be less likely to write bad code inadvertently and have to maintain it later.</p>
+<p>On a longer timeline, writing better and more thoughtful code, and being able to make and articulate tradeoffs between quick-but-ugly and robust-but-broader implementations is going to make you a more effective, more valuable developer. <a href="https://cate.blog/2021/10/12/the-rent-versus-buy-of-career-growth/">Companies buy our time but rent our expertise</a>, so while being more thoughtful about your system’s aesthetics might not drive your career at your current job, it’s likely to pay off when you move on.</p>
+<h2 id="great.-im-sold.-how">Great. I’m sold. <em>How?</em></h2>
+<p>“Try to notice things that work and things that don’t” is maddeningly vague advice, I know, particularly for something as studied (by analogy, at least) as aesthetics. This first post is just supposed to <em>motivate</em> the idea; in the next one I’ll start looking at a number of pattern languages and how they inform aesthetics, to get more specific.</p>
+<p>Look, I’m not going to change the world here; I can’t just dash off a few blog posts (even longreads) about software aesthetics and solve legacy systems. All I expect to do is offer an interesting way to look at how the people who build systems look at them, based on what I’ve seen.</p>
+<h2 id="acknowledegments">Acknowledegments</h2>
+<p>I’m grateful to these folks from Twitter for reading and commenting on a draft of this post, for which the one I published is much improved:</p>
+<ul>
+<li><a href="https://twitter.com/crankycatcoder">@crankycatcoder</a></li>
+<li><a href="https://twitter.com/DPritchett">Daniel Pritchett</a></li>
+<li><a href="https://twitter.com/RedbeardedB">RedBearded Buddha</a></li>
+</ul>
+<p>In particular, a discussion with <a href="https://arrdem.com">Reid D. “arrdem” McKenzie</a> gave me a combination of encouragement and thoughtful critique that changed my plan for the series. Thanks, Reid, I really appreciate it.</p>
+    </section>
+</article>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="relative content-center">
+                <div class="absolute left-0 flex flex-row place-content-start">
+                    <div>
+                    <a href="https://twitter.com/arachnocapital2"><img src="../images/icons8-twitter-30-brn.png" alt="Twitter (arachnocapital2)" /></a>
+                    </div><div>
+                    <a href="https://polywork.audax-labs.com/"><img src="../images/icons8-share-30-brn.png" alt="Polywork (mjolson)" /></a>
+                    </div><div>
+                    <a href="https://github.com/MattJOlson/"><img src="../images/icons8-github-30-brn.png" alt="Github (MattJOlson)" /></a>
+                    </div><div>
+                    <a href="https://www.linkedin.com/in/mattjolson/"><img src="../images/icons8-linkedin-30-brn.png" alt="Linkedin (MattJOlson)" /></a>
+                    </div><div>
+                    <a href="../rss.xml"><img src="../images/icon-rss-30-brn.png" alt="RSS feed" /></a>
+                    </div>
+                </div>
+                <div class="absolute right-0 place-content-end items-end">
+                Another great
+                <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+                blog
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
