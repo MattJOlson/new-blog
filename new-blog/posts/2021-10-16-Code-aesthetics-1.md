@@ -40,8 +40,8 @@ equivalent of [Fordite](https://web.archive.org/web/20080216011855/http://www.fo
 Much of this dangerous clutter is far harder to spot than an assembly-line trip
 hazard, which is where aesthetics comes back into play.
 
-We have evocative names for systems clogged by these hazards. "Legacy code."
-"[Big ball of Mud](http://www.laputan.org/mud/mud.html)."
+We have evocative names for systems clogged by these hazards. "Legacy code" is
+one. "[Big ball of Mud](http://www.laputan.org/mud/mud.html)" is another.
 
 ## Big-ball-of-mud legacy systems don't just _happen?_
 
