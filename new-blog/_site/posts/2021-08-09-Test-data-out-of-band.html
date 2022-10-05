@@ -30,10 +30,25 @@
         
     </section>
     <section>
-        <p>One of the nice things about the standard sum types is that they can give you a lot of explicitness. In a <code>Maybe String</code>, <code>Nothing</code> is pretty unambiguous; there ain’t no string there. By comparison, <code>Just ""</code> is also unambiguous; it’s an empty string, not (for example) the default value a JSON parser spat out to populate a missing field. The <code>Maybe</code> part is in a sense out of band of the <code>String</code> part, and that makes it easier to reason about it separately.</p>
-<p>By contrast, in a language without sum types you’re often forced to carve off part of a type’s values to represent things like “not there”. For example, in C the <code>printf</code> function returns the number of characters printed, or a negative integer to represent failure. An uninitialized <code>int</code> in C# will be <code>0</code>, just the same as an <code>int</code> you deliberately initialized to <code>0</code>. (You could make it a nullable <code>int</code> if you wanted, I suppose.)</p>
-<p>There’s a parallel problem with test data: Often only some of it is germane to the test you’re writing. Most of us aren’t testing a delightfully expressive algebra that lets us construct a precise probe of the logic we want to nail down – most of us have to write some boilerplate. <em>Make that boilerplate obviously irrelevant.</em> Do what you can to pull it mentally “out of band”.</p>
-<p>An example is in order. Suppose I’m testing some functionality on widgets, and a widget looks like this:</p>
+        <p>One of the nice things about the standard sum types is that they can give you a
+lot of explicitness. In a <code>Maybe String</code>, <code>Nothing</code> is pretty unambiguous;
+there ain’t no string there. By comparison, <code>Just ""</code> is also unambiguous; it’s
+an empty string, not (for example) the default value a JSON parser spat out to
+populate a missing field. The <code>Maybe</code> part is in a sense out of band of the
+<code>String</code> part, and that makes it easier to reason about it separately.</p>
+<p>By contrast, in a language without sum types you’re often forced to carve off
+part of a type’s values to represent things like “not there”. For example, in C
+the <code>printf</code> function returns the number of characters printed, or a negative
+integer to represent failure. An uninitialized <code>int</code> in C# will be <code>0</code>, just the
+same as an <code>int</code> you deliberately initialized to <code>0</code>. (You could make it a
+nullable <code>int</code> if you wanted, I suppose.)</p>
+<p>There’s a parallel problem with test data: Often only some of it is germane to
+the test you’re writing. Most of us aren’t testing a delightfully expressive
+algebra that lets us construct a precise probe of the logic we want to nail
+down – most of us have to write some boilerplate. <em>Make that boilerplate
+obviously irrelevant.</em> Do what you can to pull it mentally “out of band”.</p>
+<p>An example is in order. Suppose I’m testing some functionality on widgets, and
+a widget looks like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Widget</span> <span class="ot">=</span> <span class="dt">Widget</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  {<span class="ot"> modelNumber ::</span> <span class="dt">Integer</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> modelName ::</span> <span class="dt">Text</span></span>
@@ -41,8 +56,13 @@
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> ignitionTemperature ::</span> <span class="dt">Integer</span> <span class="co">-- degrees Fahrenheit</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> cheeseCapacity ::</span> <span class="dt">Integer</span> <span class="co">-- cubic inches</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
-<p>In particular, suppose I’m writing some tests around error handling when a widget runs out of cheese. <em>Everything else is irrelevant.</em> I know this, as I’m writing the tests, but you, dear reader, who might need to reference my tests when I’m on vacation, might <em>not.</em></p>
-<p>So what I can do here is create a test data template with obviously nonsensical values, which’ll tell you that they’re only there to satisfy the compiler and aren’t relevant to the test you’re reading. For example:</p>
+<p>In particular, suppose I’m writing some tests around error handling when a
+widget runs out of cheese. <em>Everything else is irrelevant.</em> I know this, as I’m
+writing the tests, but you, dear reader, who might need to reference my tests
+when I’m on vacation, might <em>not.</em></p>
+<p>So what I can do here is create a test data template with obviously nonsensical
+values, which’ll tell you that they’re only there to satisfy the compiler and
+aren’t relevant to the test you’re reading. For example:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">dummyWidget ::</span> <span class="dt">Widget</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dummyWidget <span class="ot">=</span> <span class="dt">Widget</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  { modelNumber <span class="ot">=</span> <span class="op">-</span><span class="dv">31337</span></span>
@@ -51,11 +71,38 @@
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  , ignitionTemperature <span class="ot">=</span> <span class="op">-</span><span class="dv">451</span> <span class="co">-- uh oh! This too</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  , cheeseCapacity <span class="ot">=</span> <span class="op">-</span><span class="bn">0xDECAFBAD</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
-<p>Text fields are easiest to deal with. I like a convention of <code>"I'm a (name of the text field)!"</code> because it a) tells you what you’re looking at in console output and b) probably isn’t remotely representative of anything you’re likely to stuff into that field in production. <code>Lorem ipsum</code> is another good pattern, as is basically anything that’s likely to be instantly recognized as a meme by your colleagues. (Recall that you might hire new colleagues who aren’t familiar with your meme canon, and plan appropriately.)</p>
-<p>Numeric fields are a bit trickier, but there are some patterns you can reach for. In the above example I’ve made them all negative, on the theory that you will probably never have a negative model number. I’ve also made them memetic, most recognizably <code>0xDECAFBAD</code> for <code>cheeseCapacity</code>. (For the record, I believe that decaf has its place.) If you were an online teenager when I was, you’ve probably already parsed <code>31337</code> as “elite”.</p>
-<p>Now, that <code>-451</code> for <code>ignitionTemperature</code> is just a <em>biiiit</em> sketchy. The intended connection was to Ray Bradbury’s “Fahrenheit 451”, but negated to make it “clearly nonsensical”. There’s just one problem: -451F is a few degrees above absolute zero, which makes it a (very theoretically) admissible ignition temperature for your dummy widget. Someone reading my code who’s just come from the company’s Hypercooled Computation division might look at that and wonder if I’m testing special cases of cheese exhaustion under a liquid nitrogen blanket. Better to use a different value.</p>
-<p>The last field is <code>colour</code>, and while I’m making a to-me obvious <em>Fight Club</em> reference it’s entirely likely that we build and ship cornflower blue widgets. If the <code>Colour</code> type is a union of, say, paint colours, it might not <em>have</em> a nonsensical value we can use here. I’ve never tried this and it would probably be controversial, but you might design that <code>Colour</code> type with a built-in nonsensical value, like <code>Octarine</code>, just for tests. Probably good to use as a default in your ordering templates, too; if your automation runs off the rails and orders ten million drums of Octarine paint from Dupli-Color you’re going to get a puzzled email, not an invoice.</p>
-<p>Anyway, the theory is that I’ll build a <code>dummyWidget</code> and then set whatever fields I care about before I run it through the code I’m testing. In Haskell and F# this can look like</p>
+<p>Text fields are easiest to deal with. I like a convention of <code>"I'm a (name of the text field)!"</code> because it a) tells you what you’re looking at in console
+output and b) probably isn’t remotely representative of anything you’re likely
+to stuff into that field in production. <code>Lorem ipsum</code> is another good pattern,
+as is basically anything that’s likely to be instantly recognized as a meme by
+your colleagues. (Recall that you might hire new colleagues who aren’t familiar
+with your meme canon, and plan appropriately.)</p>
+<p>Numeric fields are a bit trickier, but there are some patterns you can reach
+for. In the above example I’ve made them all negative, on the theory that you
+will probably never have a negative model number. I’ve also made them memetic,
+most recognizably <code>0xDECAFBAD</code> for <code>cheeseCapacity</code>. (For the record, I believe
+that decaf has its place.) If you were an online teenager when I was, you’ve
+probably already parsed <code>31337</code> as “elite”.</p>
+<p>Now, that <code>-451</code> for <code>ignitionTemperature</code> is just a <em>biiiit</em> sketchy. The
+intended connection was to Ray Bradbury’s “Fahrenheit 451”, but negated to make
+it “clearly nonsensical”. There’s just one problem: -451F is a few degrees
+above absolute zero, which makes it a (very theoretically) admissible ignition
+temperature for your dummy widget. Someone reading my code who’s just come from
+the company’s Hypercooled Computation division might look at that and wonder if
+I’m testing special cases of cheese exhaustion under a liquid nitrogen blanket.
+Better to use a different value.</p>
+<p>The last field is <code>colour</code>, and while I’m making a to-me obvious <em>Fight Club</em>
+reference it’s entirely likely that we build and ship cornflower blue widgets.
+If the <code>Colour</code> type is a union of, say, paint colours, it might not <em>have</em> a
+nonsensical value we can use here. I’ve never tried this and it would probably
+be controversial, but you might design that <code>Colour</code> type with a built-in
+nonsensical value, like <code>Octarine</code>, just for tests. Probably good to use as a
+default in your ordering templates, too; if your automation runs off the rails
+and orders ten million drums of Octarine paint from Dupli-Color you’re going to
+get a puzzled email, not an invoice.</p>
+<p>Anyway, the theory is that I’ll build a <code>dummyWidget</code> and then set whatever
+fields I care about before I run it through the code I’m testing. In Haskell and
+F# this can look like</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sut <span class="ot">=</span> dummyWidget { cheeseCapacity <span class="ot">=</span> <span class="dv">50</span> }</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- ...</span></span></code></pre></div>
 <p>In C# I might have a fluent builder for it:</p>

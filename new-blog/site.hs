@@ -1,12 +1,10 @@
 ------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
-import           Data.Monoid (mappend)
-import           Hakyll
-import           Text.Pandoc.Highlighting (Style
-                                          , styleToCss)
-import           Text.Pandoc.Options      (ReaderOptions (..),
-                                           WriterOptions (..))
+import Data.Monoid (mappend)
+import Hakyll
+import Text.Pandoc.Highlighting (Style, styleToCss)
+import Text.Pandoc.Options (ReaderOptions (..), WriterOptions (..))
 
 ------------------------------------------------------------------------
 

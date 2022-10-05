@@ -31,40 +31,72 @@
     </section>
     <section>
         <p>I think “waste” gets a bad rap in software development.</p>
-<p>More to the point, I think the atavistic, fearful drive by software leaders to “eliminate waste” is harmful in itself. It gets far worse when combined with “Agile” principles – note the scare-quotes before you tab over to Twitter to yell at me, although do that anyway – and in combination they form one stout pillar of the violently incompetent state of software development management that is presently fucking over millions of smart, hard-working people and lighting trillions of dollars of value on fire.</p>
+<p>More to the point, I think the atavistic, fearful drive by software leaders to
+“eliminate waste” is harmful in itself. It gets far worse when combined with
+“Agile” principles – note the scare-quotes before you tab over to Twitter to
+yell at me, although do that anyway – and in combination they form one stout
+pillar of the violently incompetent state of software development management
+that is presently fucking over millions of smart, hard-working people and
+lighting trillions of dollars of value on fire.</p>
 <p>Are you mad yet? Let’s proceed.</p>
 <h2 id="what-is-waste">What is “waste”?</h2>
-<p>In the sense in which it’s usually discussed in dev management, “waste” derives from “Lean” – usually “Lean Management” – which itself comes from Toyota’s manufacturing principles (“TPS”, “The Toyota Way”, etc). Quoting <a href="https://www.goodreads.com/book/show/194338.Lean_Software_Development">Mary and Tom Poppendieck</a> – and no, I’m not here to slander their work, I like it and I’m mad that people stopped reading after 20 pages – waste is defined thus:</p>
+<p>In the sense in which it’s usually discussed in dev management, “waste” derives
+from “Lean” – usually “Lean Management” – which itself comes from Toyota’s
+manufacturing principles (“TPS”, “The Toyota Way”, etc). Quoting <a href="https://www.goodreads.com/book/show/194338.Lean_Software_Development">Mary and Tom
+Poppendieck</a>
+– and no, I’m not here to slander their work, I like it and I’m mad that people
+stopped reading after 20 pages – waste is defined thus:</p>
 <blockquote>
-<p>[…]anything that does not create value for the customer is waste. – Lean Software Development (2003)</p>
+<p>[…]anything that does not create value for the customer is waste.
+– Lean Software Development (2003)</p>
 </blockquote>
 <p>Later:</p>
 <blockquote>
 <p>If there is a way to do without it, it is waste.</p>
 </blockquote>
-<p>Toyota’s patriarch Taiichi Ohno, who either coined or at least is credit for this lens on manufacturing, defined seven categories of wasteful processes in manufacturing. The Poppendiecks translated those to software development. I’m not going to go over them here, because my problem is not with people who study Lean and carefully think about its applications to software businesses. My beef is with people who scribble down those definitions of “waste” in the margins of their Agile Certification In Two Days course notes and come back to their teams determined to apply “the first principle” of Lean management: <strong>Eliminate Waste</strong>.</p>
+<p>Toyota’s patriarch Taiichi Ohno, who either coined or at least is credit for
+this lens on manufacturing, defined seven categories of wasteful processes in
+manufacturing. The Poppendiecks translated those to software development. I’m
+not going to go over them here, because my problem is not with people who study
+Lean and carefully think about its applications to software businesses. My beef
+is with people who scribble down those definitions of “waste” in the margins of
+their Agile Certification In Two Days course notes and come back to their teams
+determined to apply “the first principle” of Lean management:
+<strong>Eliminate Waste</strong>.</p>
 <h3 id="hold-up-those-arent-equivalent">Hold up! Those aren’t equivalent!</h3>
 <p>Aha. Yeah, if you’re paying attention, the two definitions:</p>
 <blockquote>
 <p>Anything that does not create customer value is waste</p>
 <p>If there is a way to do without it, it is waste</p>
 </blockquote>
-<p>aren’t quite the same, are they. There are things your company can’t do without that don’t create customer value – keeping the bathrooms stocked with toilet paper, say – that Lean consultants have spent an awful lot of effort trying to finesse. The usual method is to break it down into “necessary waste”, which is stuff that doesn’t deliver customer value but can’t be done without, and “unnecessary waste”, which is what they usually talk about simply as “waste”.</p>
-<p>Again, I’m not upset with anyone who’s careful enough to make this distinction consistently. Unfortunately, most people who aren’t deep into the weeds of Lean Manufacturing – because they’re busy software managers and need to increase output to hit their deadlines – aren’t that kind of careful.</p>
+<p>aren’t quite the same, are they. There are things your company can’t do without
+that don’t create customer value – keeping the bathrooms stocked with toilet
+paper, say – that Lean consultants have spent an awful lot of effort trying to
+finesse. The usual method is to break it down into “necessary waste”, which is
+stuff that doesn’t deliver customer value but can’t be done without, and
+“unnecessary waste”, which is what they usually talk about simply as “waste”.</p>
+<p>Again, I’m not upset with anyone who’s careful enough to make this distinction
+consistently. Unfortunately, most people who aren’t deep into the weeds of Lean
+Manufacturing – because they’re busy software managers and need to increase
+output to hit their deadlines – aren’t that kind of careful.</p>
 <h2 id="what-is-value">What is “value”?</h2>
 <p>Go back to that first definition of waste:</p>
 <blockquote>
 <p>Anything that does not create value for the customer is waste.</p>
 </blockquote>
-<p>Look how it book-ends with this other principle, strongly hinted at in the <a href="https://agilemanifesto.org/principles.html">Agile Manifesto</a>’s authors and made more concrete and explicit by the Continuous Delivery folks:</p>
+<p>Look how it book-ends with this other principle, strongly hinted at in the
+<a href="https://agilemanifesto.org/principles.html">Agile Manifesto</a>’s authors and made
+more concrete and explicit by the Continuous Delivery folks:</p>
 <blockquote>
 <p>Code doesn’t provide value until it’s running for customers in production.</p>
 </blockquote>
 <p>The agilists wrote it as:</p>
 <blockquote>
-<p>Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.</p>
+<p>Our highest priority is to satisfy the customer through early and continuous
+delivery of valuable software.</p>
 </blockquote>
-<p>There’s a lot of sympathy between these principles, isn’t there? They <em>vibe</em> together. You could – and many do – write it out as a syllogism:</p>
+<p>There’s a lot of sympathy between these principles, isn’t there? They <em>vibe</em>
+together. You could – and many do – write it out as a syllogism:</p>
 <blockquote>
 <p>Software isn’t valuable unless it’s delivered for the customer.</p>
 <p>Anything that doesn’t provide value for the customer is waste.</p>
@@ -73,13 +105,27 @@
 <p>(Did you spot the error? Pretend you’re a type-checker.)</p>
 <p>Now, here’s where it all comes together and goes horribly wrong:</p>
 <h2 id="what-is-gonna-save-my-ass-from-all-these-deadlines">What is gonna save my ass from all these deadlines?</h2>
-<p>Consider how Agile is marketed: <em>it’s a productivity transformation.</em> <a href="https://www.goodreads.com/en/book/show/19288230-scrum">Twice the Work in Half the Time</a> and all that. (The Agile Manifesto, notably, makes no such claims: it only claims that its principles are “uncovering better ways of developing software”.)</p>
+<p>Consider how Agile is marketed: <em>it’s a productivity transformation.</em> <a href="https://www.goodreads.com/en/book/show/19288230-scrum">Twice
+the Work in Half the Time</a>
+and all that. (The Agile Manifesto, notably, makes no such claims: it only
+claims that its principles are “uncovering better ways of developing software”.)</p>
 <p>Think a bit about who’s looking for a productivity transformation.</p>
-<p>There’s a few people building software, or building software <em>companies</em>, who latch onto stuff like that reflexively and use it to turn good into great. I hope you get to work for one. But most successful teams, orgs, companies aren’t looking for an agile transformation because <em>they are alredy successful.</em></p>
-<p>Where the Scrum book and other “Lean management” or “Agile” methodologies are going to grow most vibrantly are <em>teams that are in trouble and under a lot of pressure</em>, because they’re <em>desperate</em> for something to turn the tide. Managers and directors and CTOs who’re <em>scared</em> because they need to do something to stem the tide of outages and attrition, and still hit impossible targets set by Sales and Product (who are <em>themselves</em> scared because clients are churning over all the downtime and the pipeline is empty because barely anything ever ships).</p>
+<p>There’s a few people building software, or building software <em>companies</em>, who
+latch onto stuff like that reflexively and use it to turn good into great. I
+hope you get to work for one. But most successful teams, orgs, companies aren’t
+looking for an agile transformation because <em>they are alredy successful.</em></p>
+<p>Where the Scrum book and other “Lean management” or “Agile” methodologies are
+going to grow most vibrantly are <em>teams that are in trouble and under a lot of
+pressure</em>, because they’re <em>desperate</em> for something to turn the tide. Managers
+and directors and CTOs who’re <em>scared</em> because they need to do something to
+stem the tide of outages and attrition, and still hit impossible targets set by
+Sales and Product (who are <em>themselves</em> scared because clients are churning
+over all the downtime and the pipeline is empty because barely anything ever
+ships).</p>
 <p>And into this you drop a single, simple, precept:</p>
 <blockquote>
-<p>Eliminate waste. All else follows from this principle. You’ll be Toyota in no time!</p>
+<p>Eliminate waste. All else follows from this principle. You’ll be Toyota in no
+time!</p>
 </blockquote>
 <p>Fantastic! How do I do that?</p>
 <blockquote>
@@ -87,49 +133,150 @@
 </blockquote>
 <p><a href="https://media.giphy.com/media/2GjgvS5vA6y08/giphy.gif">And. Here. We. Go!</a></p>
 <h3 id="what-is-the-point-of-continuous-delivery">What is the point of… continuous delivery?</h3>
-<p>The first time I recognized this particularly narrow focus on waste, a manager was telling me that feature-flagged dark deploys was waste, and he didn’t approve. After all, code running in prod behind a feature flag isn’t delivering value to the customer, and deploys take nonzero effort and carry a nonzero risk of degradation or downtime.</p>
+<p>The first time I recognized this particularly narrow focus on waste, a manager
+was telling me that feature-flagged dark deploys was waste, and he didn’t
+approve. After all, code running in prod behind a feature flag isn’t delivering
+value to the customer, and deploys take nonzero effort and carry a nonzero risk
+of degradation or downtime.</p>
 <h3 id="what-is-the-point-of-unit-tests">What is the point of… unit tests?</h3>
-<p>The first time I <em>remember</em> running across this view on waste, although I didn’t recognize it as such at the time, an enterprise architect was telling me about the uselessness of unit tests. After all, acceptance tests suffice to show that the features required by the customer – actually the product manager, but this language is instructive – are working, and at the code level unit tests just get in your way when you’re refactoring (<em>sic.</em>). Therefore, acceptance tests deliver value in the very agile-aligned way of demonstrating progress to the customer, while unit tests deliver no customer value.</p>
+<p>The first time I <em>remember</em> running across this view on waste, although I didn’t
+recognize it as such at the time, an enterprise architect was telling me about
+the uselessness of unit tests. After all, acceptance tests suffice to show that
+the features required by the customer – actually the product manager, but this
+language is instructive – are working, and at the code level unit tests just
+get in your way when you’re refactoring (<em>sic.</em>). Therefore, acceptance tests
+deliver value in the very agile-aligned way of demonstrating progress to the
+customer, while unit tests deliver no customer value.</p>
 <h3 id="what-is-the-point-of-not-setting-money-on-fire">What is the point of… not setting money on fire?</h3>
-<p>This one’s my favourite. One company I worked for signed a contract with a couple new clients, which involved implementing a new feature. Following the agile principles of not doing too much design up front and responding to change over following a plan, and the unfortunate consequences of the dev org working mostly all the way to the right of the timeline, that feature was guessed to be “pretty self-contained” and approved.</p>
+<p>This one’s my favourite. One company I worked for signed a contract with a
+couple new clients, which involved implementing a new feature. Following the
+agile principles of not doing too much design up front and responding to change
+over following a plan, and the unfortunate consequences of the dev org working
+mostly all the way to the right of the timeline, that feature was guessed to be
+“pretty self-contained” and approved.</p>
 <p>Friends, it was not. It got <em>everywhere.</em></p>
-<p>By the time we’d delivered that feature, we had spent more than three times as much in developer effort as those two clients were predicted to earn us in a year. That’s not counting effort outside the development org, or the opportunity cost of what those people could’ve built instead, or the broken integrations our narrow (“agile!”) view of the problem inflicted on clients <em>on another continent altogether.</em></p>
+<p>By the time we’d delivered that feature, we had spent more than three times as
+much in developer effort as those two clients were predicted to earn us in a
+year. That’s not counting effort outside the development org, or the opportunity
+cost of what those people could’ve built instead, or the broken integrations our
+narrow (“agile!”) view of the problem inflicted on clients <em>on another continent
+altogether.</em></p>
 <h2 id="what-then-is-the-problem">What, then, is the problem?</h2>
-<p>The problem is enthusiastic and narrow focus on eliminating anything that isn’t shipping features, driven by optimistic reductionism, driven by (usually) <a href="https://cloud.google.com/architecture/devops/devops-culture-westrum-organizational-culture">Westrum bureaucratic culture</a>, driven by… well, <a href="https://qualitysafety.bmj.com/content/26/8/671">I’m not going to go Five Whys on you</a>. There’s a lot of attractive nuisance to this permutation of “eliminate waste”.</p>
+<p>The problem is enthusiastic and narrow focus on eliminating anything that isn’t
+shipping features, driven by optimistic reductionism, driven by (usually)
+<a href="https://cloud.google.com/architecture/devops/devops-culture-westrum-organizational-culture">Westrum bureaucratic culture</a>,
+driven by… well, <a href="https://qualitysafety.bmj.com/content/26/8/671">I’m not going to go Five Whys on you</a>.
+There’s a lot of attractive nuisance to this permutation of “eliminate waste”.</p>
 <p>Look at the faulty consequent we ended up with:</p>
 <blockquote>
 <p>Anything that isn’t delivered software is waste.</p>
 </blockquote>
-<p>That looks great to scared people in Sales and in Product. Eliminate the waste, and there’s more room for shipping features. That’s great! Sales can sell new features, and Product can burn down their Gantt charts… er, Gantt their burndown charts… ah, you know, <em>progress through their roadmaps</em> and build the <em>cool shit</em> that got them excited about product management in the first place.</p>
-<p>It also looks great to scared people in Dev. “Eliminate the waste” is an easy and incontrovertible prescription, and “Anything that isn’t shipping feature code is waste” is a pretty clear-cut discriminator.</p>
+<p>That looks great to scared people in Sales and in Product. Eliminate the waste,
+and there’s more room for shipping features. That’s great! Sales can sell new
+features, and Product can burn down their Gantt charts… er, Gantt their
+burndown charts… ah, you know, <em>progress through their roadmaps</em> and build the
+<em>cool shit</em> that got them excited about product management in the first place.</p>
+<p>It also looks great to scared people in Dev. “Eliminate the waste” is an easy
+and incontrovertible prescription, and “Anything that isn’t shipping feature
+code is waste” is a pretty clear-cut discriminator.</p>
 <p>And yet….</p>
-<p>The <em>other</em> problem is the focus on the customer. <a href="https://www.theverge.com/2019/9/19/20872984/moviepass-shutdown-subscription-movies-helios-matheson-ted-farnsworth-explainer">MoviePass</a> famously delivered an <em>awful lot</em> of value to the customer in their last year or two, until they didn’t. At some point, you need to deliver value to the <em>company</em>. Often that’s by delivering value to the customer, but as in my third example, sometime’s it’s by deciding not to do that.</p>
+<p>The <em>other</em> problem is the focus on the customer. <a href="https://www.theverge.com/2019/9/19/20872984/moviepass-shutdown-subscription-movies-helios-matheson-ted-farnsworth-explainer">MoviePass</a>
+famously delivered an <em>awful lot</em> of value to the customer in their last year or
+two, until they didn’t. At some point, you need to deliver value to the
+<em>company</em>. Often that’s by delivering value to the customer, but as in my third
+example, sometime’s it’s by deciding not to do that.</p>
 <h2 id="what-is-missing">What is missing?</h2>
-<p>The Poppendiecks don’t fall into this trap, incidentally, and I’m willing to bet that Taiichi Ohno didn’t either. “Delivers value” isn’t a purely binary, either/or thing: It’s a probability, on a timeline. You don’t type code into your editor because each character delivers a little bit of customer value; you expect that code-typing to pay off when you ship the feature. Nobody objects to this simple-minded triviality, but it needs to generalize.</p>
-<p>Dark deploys are a bet that you’ll deliver more value faster by catching some bugs in production that didn’t manifest earlier <em>before</em> exposing them to customer traffic (in this case, by not stepping on a negative-value rake and incurring downtime). They’re also a bet that your devs will get better at deploys by doing more of them, and learn more about how their software behaves in prod by deploying it there more often <em>and looking at what it does</em>. Combined, that might permit you to swing that axe you’ve been playing with all blog post and cut some of the more onerous go/no-go checks that fear of the ghosts of outages past has baked into your process.</p>
-<p>Unit tests are a bet that you’ll deliver more value faster by taking smaller confident steps with a well-defined blast radius than by occasionally running a ponderous end-to-end test suite and having only a vague sense of what fucked up when the build goes red. They’re also a bet that designing code to be easily tested in isolation produces code that’s easier to change, which may let you deliver more value faster when circumstances demand it.</p>
-<p>A couple days of whiteboarding with the Architecture team and a few tech leads, accompanied by some design sketches and decision logs, might help you decide to avoid a project that’ll deliver negative expected value and build something that’ll deliver value instead. Or, it might get the people who know the right things to discover each other, and start emphasizing their Individual Interactions over the Process Tool of “eliminate waste” narrowly applied.</p>
+<p>The Poppendiecks don’t fall into this trap, incidentally, and I’m willing to bet
+that Taiichi Ohno didn’t either. “Delivers value” isn’t a purely binary,
+either/or thing: It’s a probability, on a timeline. You don’t type code into
+your editor because each character delivers a little bit of customer value; you
+expect that code-typing to pay off when you ship the feature. Nobody objects to
+this simple-minded triviality, but it needs to generalize.</p>
+<p>Dark deploys are a bet that you’ll deliver more value faster by catching some
+bugs in production that didn’t manifest earlier <em>before</em> exposing them to
+customer traffic (in this case, by not stepping on a negative-value rake and
+incurring downtime). They’re also a bet that your devs will get better at
+deploys by doing more of them, and learn more about how their software
+behaves in prod by deploying it there more often <em>and looking at what it does</em>.
+Combined, that might permit you to swing that axe you’ve been playing with all
+blog post and cut some of the more onerous go/no-go checks that fear of the
+ghosts of outages past has baked into your process.</p>
+<p>Unit tests are a bet that you’ll deliver more value faster by taking smaller
+confident steps with a well-defined blast radius than by occasionally running a
+ponderous end-to-end test suite and having only a vague sense of what fucked up
+when the build goes red. They’re also a bet that designing code to be easily
+tested in isolation produces code that’s easier to change, which may let you
+deliver more value faster when circumstances demand it.</p>
+<p>A couple days of whiteboarding with the Architecture team and a few tech leads,
+accompanied by some design sketches and decision logs, might help you decide to
+avoid a project that’ll deliver negative expected value and build something
+that’ll deliver value instead. Or, it might get the people who know the right
+things to discover each other, and start emphasizing their Individual
+Interactions over the Process Tool of “eliminate waste” narrowly applied.</p>
 <h2 id="what-else-do-you-have-to-rant-about">What else do you have to rant about?</h2>
-<p>Getting an underwater ops team out of firefighting mode is a classic example of undermining the glib interpretation of “only shipped features are valuable” for <em>actual</em> value. As <a href="https://twitter.com/Paul_IPv6/status/1442595907745112071">@Paul_IPV6 reminds us</a>, uptime might not sell but it sure forestalls churn. (And consider the opportunity cost of having dev-shaped people getting paged at 3am to reboot servers, and eventually quitting, versus using that conscientiousness to build cool shit.) Fixing your broken autoscaling rules or tearing out and replacing the library that OOMs every other day might not seem like “delivers customer value” when it’s not tagged to an epic with story points attached, but it’s probably more impactful than any equivalent amount of work.</p>
-<p>Keeping in an ops-ish mindset, <em>slack</em> is a bet that’s utterly at odds with the practice of ruthlessly eliminating waste. If you run your team at its limit of workload, you’ll have no extra capacity to adapt when the unexpected inevitably smacks you in the face. Deliberately taking on less work might <em>seem</em> like it’s going to have negative payoff, but once you get out of the “only feature code running in prod matters” mindset you can significantly increase your adaptability.</p>
+<p>Getting an underwater ops team out of firefighting mode is a classic example of
+undermining the glib interpretation of “only shipped features are valuable” for
+<em>actual</em> value. As <a href="https://twitter.com/Paul_IPv6/status/1442595907745112071">@Paul_IPV6 reminds us</a>,
+uptime might not sell but it sure forestalls churn. (And consider the
+opportunity cost of having dev-shaped people getting paged at 3am to reboot
+servers, and eventually quitting, versus using that conscientiousness to build
+cool shit.) Fixing your broken autoscaling rules or tearing out and replacing
+the library that OOMs every other day might not seem like “delivers customer
+value” when it’s not tagged to an epic with story points attached, but it’s
+probably more impactful than any equivalent amount of work.</p>
+<p>Keeping in an ops-ish mindset, <em>slack</em> is a bet that’s utterly at odds with the
+practice of ruthlessly eliminating waste. If you run your team at its limit of
+workload, you’ll have no extra capacity to adapt when the unexpected inevitably
+smacks you in the face. Deliberately taking on less work might <em>seem</em> like it’s
+going to have negative payoff, but once you get out of the “only feature code
+running in prod matters” mindset you can significantly increase your
+adaptability.</p>
 <blockquote>
-<p>I think one reason this confusion pops up regularly in software is that it’s less institutionally obvious what to optimize for. I remember running through some contrived kanban exercises – build paper planes as a team, each making one fold – and even though the results were pretty clear about the longest step determining throughput, a lot of people insisted that maximizing each individual’s output was the way to go.</p>
-<p>“We want to ship more features” translated into “only shipped feature code matters” often leads to “the only behaviour we want to see out of our devs is stuff that looks like shipping features”. But <em>that</em> deserves to be a whole ’nother blog post.</p>
+<p>I think one reason this confusion pops up regularly in software is that it’s
+less institutionally obvious what to optimize for. I remember running through
+some contrived kanban exercises – build paper planes as a team, each making
+one fold – and even though the results were pretty clear about the longest
+step determining throughput, a lot of people insisted that maximizing each
+individual’s output was the way to go.</p>
+<p>“We want to ship more features” translated into “only shipped feature code
+matters” often leads to “the only behaviour we want to see out of our devs is
+stuff that looks like shipping features”. But <em>that</em> deserves to be a whole
+’nother blog post.</p>
 </blockquote>
-<p>Training is another big beneficiary of this improved framework. Sending an individual developer to a conference has, at n=1, a pretty low expected payoff. (This is especially true if the team is focused on Shipping Features To Prod because that’s the only thing that matters, and the dev in question isn’t given an opportunity to cement anything they learned or spread it around.) I once ran a Pluralsight installation for my dev org, and the number of people who signed up enthusiastically and <em>disappeared</em> once they realized they’d asked for homework vastly exceeded the number of people who stuck with it past a few weeks.</p>
-<p>But you don’t send people to conferences or let them expense books or buy them courseware licenses because you expect an immediate, concrete payoff, do you? (Well….) At best, you do it because you’re trying to encourage your people to grow, and build an organization and a culture where <a href="https://blog.pragmaticengineer.com/what-silicon-valley-gets-right-on-software-engineers/">all of your smart problem solvers have the leverage</a> to, what was that phrase again?</p>
+<p>Training is another big beneficiary of this improved framework. Sending an
+individual developer to a conference has, at n=1, a pretty low expected
+payoff. (This is especially true if the team is focused on Shipping Features To
+Prod because that’s the only thing that matters, and the dev in question isn’t
+given an opportunity to cement anything they learned or spread it around.) I
+once ran a Pluralsight installation for my dev org, and the number of people
+who signed up enthusiastically and <em>disappeared</em> once they realized they’d asked
+for homework vastly exceeded the number of people who stuck with it past a few
+weeks.</p>
+<p>But you don’t send people to conferences or let them expense books or buy them
+courseware licenses because you expect an immediate, concrete payoff, do you?
+(Well….) At best, you do it because you’re trying to encourage your people to
+grow, and build an organization and a culture where <a href="https://blog.pragmaticengineer.com/what-silicon-valley-gets-right-on-software-engineers/">all of your smart problem
+solvers have the leverage</a>
+to, what was that phrase again?</p>
 <p>Oh yeah</p>
 <p>Deliver just a <em>shit-ton</em> of value to the customer.</p>
 <h2 id="whats-your-takeaway">What’s your takeaway?</h2>
 <p>“Eliminate waste” doesn’t operate in a vacuum.</p>
 <p>Shipping feature code is not the only thing that matters.</p>
-<p>This language can lead you to narrow your focus and bury your team in technical debt. It can lead you to write off your team’s culture and your own (and your colleagues’s) growth and career development as secondary. Don’t do it.</p>
+<p>This language can lead you to narrow your focus and bury your team in technical
+debt. It can lead you to write off your team’s culture and your own (and your
+colleagues’s) growth and career development as secondary. Don’t do it.</p>
 <blockquote>
-<p>“But Matt, that’s obvious! People don’t really behave in such ludicrously reductive ways!”</p>
-<p>Oh yeah they do, even people you’d least expect, when under pressure. Think about this ahead of time so you don’t have to ad-lib your values.</p>
+<p>“But Matt, that’s obvious! People don’t really behave in such ludicrously
+reductive ways!”</p>
+<p>Oh yeah they do, even people you’d least expect, when under pressure. Think
+about this ahead of time so you don’t have to ad-lib your values.</p>
 </blockquote>
-<p>Think in bets (“how much value is this likely to deliver?”) and timelines (“when is this likely to pay off?”) and, ideally, both at once.</p>
-<p>And for god’s sake stop trying to maximize immediate efficiency and utilization when you really want to ship more over time. Play for area under the curve, not a short-term high.</p>
+<p>Think in bets (“how much value is this likely to deliver?”) and timelines
+(“when is this likely to pay off?”) and, ideally, both at once.</p>
+<p>And for god’s sake stop trying to maximize immediate efficiency and utilization
+when you really want to ship more over time. Play for area under the curve, not
+a short-term high.</p>
     </section>
 </article>
 
